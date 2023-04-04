@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo
+    networks:
+      - services-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: devops_mongo
+    expose:
+      - 27017
+    restart: always
+    volumes:
+      - ./data:/data/db
+
+networks:
+  services-network:
+volumes:
+  sail-mysql:
+    driver: local
